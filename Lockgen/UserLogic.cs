@@ -12,14 +12,13 @@ public class UserLogic
     /// <returns>Returns the number of characters for the password</returns>
     public static int GetPasswordSize(string message)
     {
-        string? output = string.Empty;
-        int size = 0;
+        string? input = string.Empty;
+        int size;
         
-        while (string.IsNullOrWhiteSpace(output))
+        while (int.TryParse(input, out size) == false)
         {
             Console.Write(message);
-            output = Console.ReadLine();
-            int.TryParse(output, out size);
+            input = Console.ReadLine();
         }
         
         Console.WriteLine($"Your password will be made up of {size} characters");
