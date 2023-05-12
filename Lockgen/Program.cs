@@ -1,4 +1,5 @@
-﻿using TextCopy;
+﻿using Lockgen.Models;
+using TextCopy;
 
 namespace Lockgen;
 
@@ -9,23 +10,17 @@ public class Program
         StandardMessages.WelcomeUser();
         StandardMessages.ShowPasswordGuidelines();
         Console.WriteLine();
+
+        PasswordGenerationOptions passwordGenerationOptions = new()
+        {
+            Size = UserLogic.GetPasswordSize("What is the desired number of characters for the password?: "),
+            UseUpper = UserLogic.ConfirmPasswordWithOption("Do you want your password to contain upper letters? (y/n): "),
+            UseLower = UserLogic.ConfirmPasswordWithOption("Do you want your password to contain lowercase letters? (y/n): "),
+            UseDigits = UserLogic.ConfirmPasswordWithOption("Do you want your password to contain digits? (y/n): "),
+            UseSpecial = UserLogic.ConfirmPasswordWithOption("Do you want your password to contain special characters? (y/n): ")
+        };
         
-        int passwordSize = UserLogic.GetPasswordSize("What is the desired number of characters for the password?: ");
-
-        bool cotainsUpperLetters =
-            UserLogic.ConfirmPasswordWithOption("Do you want your password to contain upper letters? (y/n): ");
-
-        bool cotainsLowerLetters =
-            UserLogic.ConfirmPasswordWithOption("Do you want your password to contain lowercase letters? (y/n): ");
-
-        bool containsDigits =
-            UserLogic.ConfirmPasswordWithOption("Do you want your password to contain digits? (y/n): ");
-
-        bool containsSpecialSymbols =
-            UserLogic.ConfirmPasswordWithOption("Do you want your password to contain special characters? (y/n): ");
-
-        string generatedPassword = Generator.GeneratePassword(passwordSize, cotainsUpperLetters, cotainsLowerLetters,
-            containsDigits, containsSpecialSymbols);
+        string generatedPassword = Generator.GeneratePassword(passwordGenerationOptions);
 
         Console.WriteLine();
         Console.Write($"Your password is {generatedPassword} \n");

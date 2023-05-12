@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Lockgen.Models;
 
 namespace Lockgen;
 
@@ -16,27 +17,23 @@ public static class Generator
     /// <summary>
     ///     The method responsible for generating the password
     /// </summary>
-    /// <param name="size">Number of characters of the password</param>
-    /// <param name="useUpper">Option that allows the password to contain capital letters</param>
-    /// <param name="useLower">Option that allows password to contain lower case letters</param>
-    /// <param name="useDigits">Option that allows password to contain digits</param>
-    /// <param name="useSpecial">Option that allows password to contain special characters</param>
+    /// <param name="options">Object containing the options of a generated password</param>
     /// <returns>The generated password as a string</returns>
-    public static string GeneratePassword(int size, bool useUpper, bool useLower, bool useDigits, bool useSpecial)
+    public static string GeneratePassword(PasswordGenerationOptions options)
     {
-        byte[] data = new byte[size * 10];
+        byte[] data = new byte[options.Size * 10];
         RandomNumberGenerator.Fill(data);
 
         StringBuilder passwordOptions = new();
 
-        if (useUpper) passwordOptions.Append(UpperCharacters);
-        if (useLower) passwordOptions.Append(LowercaseCharacters);
-        if (useDigits) passwordOptions.Append(Digits);
-        if (useSpecial) passwordOptions.Append(SpecialCharacters);
+        if (options.UseUpper) passwordOptions.Append(UpperCharacters);
+        if (options.UseLower) passwordOptions.Append(LowercaseCharacters);
+        if (options.UseDigits) passwordOptions.Append(Digits);
+        if (options.UseSpecial) passwordOptions.Append(SpecialCharacters);
 
         StringBuilder password = new();
         
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < options.Size; i++)
         {
             long random = BitConverter.ToUInt32(data, i * 10) % passwordOptions.Length;
             password.Append(passwordOptions[(int)random]);
