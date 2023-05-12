@@ -41,7 +41,7 @@ public static class UserLogic
             Console.Write(message);
             input = Console.ReadLine();
 
-            if (input.Equals("y"))
+            if (input!.Equals("y"))
             {
                 output = true;
             }
