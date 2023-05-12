@@ -20,6 +20,7 @@ public static class StandardMessages
     /// </summary>
     public static void ShowPasswordGuidelines()
     {
+        Console.WriteLine();
         Console.WriteLine(
             "To create a secure and random password, please specify the desired number of characters for your password.");
         Console.WriteLine(
