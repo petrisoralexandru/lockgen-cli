@@ -1,4 +1,6 @@
-﻿namespace Lockgen;
+﻿using TextCopy;
+
+namespace Lockgen;
 
 public class Program
 {
@@ -26,6 +28,9 @@ public class Program
             containsDigits, containsSpecialSymbols);
 
         Console.WriteLine();
-        Console.Write($"Your password is {generatedPassword}");
+        Console.Write($"Your password is {generatedPassword} \n");
+        
+        ClipboardService.SetText(generatedPassword);
+        Console.Write("The password has been copied to the clipboard. You can use it using the key combination CTRL+V.");
     }
 }
