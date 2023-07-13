@@ -10,7 +10,7 @@
 - Powerful password generation method for high quality results
 
 ## How it works
-https://github.com/petrisoralexandru/lockgen-cli/assets/34144926/00dc76b4-f69c-4e5f-8b10-61c54f789413
+![LockgenShowcase](https://github.com/petrisoralexandru/lockgen-cli/assets/34144926/3ebe521c-32a0-4d99-9fdb-54149c71ec4a)
 
 1. The program starts its execution by prompting the user, after which they are given advice on password length.
 2. The program requires the user to specify, step by step, the length of the password, whether the password should include uppercase, lowercase, digits and special characters.
@@ -28,9 +28,9 @@ https://github.com/petrisoralexandru/lockgen-cli/assets/34144926/00dc76b4-f69c-4
 
 ## Package used
 
-| Name                                     | Released Package |
-|------------------------------------------|------------------|
-| TextCopy                    | [![TextCopy Badge](https://buildstats.info/nuget/TextCopy)](https://www.nuget.org/packages/TextCopy) |
+| Name                                     | Utility | Released Package |
+|------------------------------------------|------------------| --------|
+| TextCopy                    | Ability to copy text to clipboard | [![TextCopy Badge](https://buildstats.info/nuget/TextCopy)](https://www.nuget.org/packages/TextCopy) |
 
 ## Contribution
 Contributions are welcome! If you would like to contribute to the development of this project, please follow the steps below:
